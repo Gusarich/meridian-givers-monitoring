@@ -1,9 +1,3 @@
-window.Buffer = require('buffer').Buffer;
-const TonClient = require('@ton/ton').TonClient;
-const getHttpEndpoint = require('@orbs-network/ton-access').getHttpEndpoint;
-const Address = require('@ton/ton').Address;
-const fromNano = require('@ton/ton').fromNano;
-
 async function main() {
     const client = new TonClient({
         endpoint: await getHttpEndpoint(),
@@ -39,7 +33,7 @@ async function main() {
                     ((index % 10) + 1) +
                     ' - Balance: ' +
                     formattedBalance +
-                    'GRAM';
+                    ' GRAM';
             }
 
             return balance; // Return the balance for use in the total
@@ -62,7 +56,7 @@ async function main() {
                     Math.floor(total / 1e9).toLocaleString() +
                     ' / ' +
                     Number(5000000000).toLocaleString() +
-                    'GRAM';
+                    ' GRAM';
             }
             {
                 const label = totalProgress.previousElementSibling;
