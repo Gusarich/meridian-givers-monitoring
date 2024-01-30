@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Givers Monitoring</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">Givers Monitoring</h1>
+            <div class="progress-bars"></div>
+        </div>
+        <script>
+            function createProgressBar(category, index, maxBalance) {
+                // Create the container div for the progress bar
+                var progressBarContainer = document.createElement('div');
+                progressBarContainer.className = 'progress-bar';
+
+                // Create the label
+                var label = document.createElement('label');
+                label.htmlFor = category + index;
+                label.textContent = category + ' #' + index;
+
+                // Create the progress element
+                var progress = document.createElement('progress');
+                progress.id = 'giver' + index;
+                progress.value = maxBalance; // Placeholder value
+                progress.max = maxBalance;
+
+                // Append label and progress bar to the container
+                progressBarContainer.appendChild(label);
+                progressBarContainer.appendChild(progress);
+
+                return progressBarContainer;
+            }
+
+            function addProgressBars() {
+                var categories = ['Extra Small', 'Small', 'Medium', 'Large'];
+                var maxBalances = [
+                    350000000000000000, 75000000000000000, 50000000000000000,
+                    25000000000000000,
+                ];
+                var container = document.querySelector('.progress-bars');
+                let totalI = 1;
+                categories.forEach((category) => {
+                    for (let i = 1; i <= 10; i++, totalI++) {
+                        container.appendChild(
+                            createProgressBar(
+                                category,
+                                totalI,
+                                maxBalances[categories.indexOf(category)]
+                            )
+                        );
+                    }
+                });
+            }
+
+            addProgressBars();
+        </script>
+        <script src="dist/main.js"></script>
+    </body>
+</html>

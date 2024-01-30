@@ -1,0 +1,20 @@
+{
+  "name": "givers-monitoring",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@orbs-network/ton-access": "^2.3.3",
+    "@ton/core": "^0.54.0",
+    "@ton/ton": "^13.9.0",
+    "buffer": "^6.0.3"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
+}

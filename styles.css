@@ -1,0 +1,42 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4; /* Optional: added a light background */
+}
+
+.container {
+    display: flex; /* Using flex to center children */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+    min-height: 100vh; /* Minimum height of viewport */
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto; /* Centering container */
+    padding: 20px; /* Adding some padding around the container */
+}
+
+.title {
+    margin-bottom: 40px; /* More space below the title */
+}
+
+.progress-bars {
+    width: 100%; /* Full width of the container */
+}
+
+.progress-bar {
+    width: 60%; /* Adjust width of progress bars */
+    margin: 10px auto; /* Adding a 10px margin around each progress bar */
+}
+
+progress {
+    width: 100%; /* Full width of the progress-bar container */
+    height: 20px; /* Adjust height as needed */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left; /* Align text to the left */
+}
