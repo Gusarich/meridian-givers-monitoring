@@ -52,11 +52,11 @@ async function main() {
         endpoint: await getHttpEndpoint(),
     });
 
-    for (let i = 0; ; i++) {
-        const giverIndex = i % givers.length;
+    // Function to update a single giver's balance
+    async function updateGiverBalance(giver, index) {
         try {
             // Parse the address from the current giver
-            const address = Address.parse(givers[giverIndex]);
+            const address = Address.parse(giver);
 
             // Fetch the balance using the parsed address
             const balanceResponse = await client.callGetMethod(
@@ -68,30 +68,33 @@ async function main() {
             // Read the number from the balance response
             const balance = balanceResponse.stack.readNumber();
 
-            console.log(balance);
-
             // Update the progress bar for the current giver
-            const progress = document.getElementById(`giver${giverIndex + 1}`);
-            console.log(progress);
+            const progress = document.getElementById(`giver${index + 1}`);
             if (progress) {
                 progress.value = balance; // Here you might need to adjust based on your scale
                 const label = progress.previousElementSibling; // Assuming label is right before progress bar
                 label.textContent =
                     label.textContent.split('#')[0] +
                     '#' +
-                    ((giverIndex % 10) + 1) +
+                    (index + 1) +
                     ' - Balance: ' +
                     fromNano(balance);
             }
         } catch (error) {
-            console.error(
-                'Error fetching balance for giver:',
-                givers[giverIndex],
-                error
-            );
+            console.error('Error fetching balance for giver:', giver, error);
         }
+    }
 
-        await new Promise((resolve) => setTimeout(resolve, 300));
+    // Infinite loop to update balances
+    while (true) {
+        // Create a promise for each giver's balance update
+        const updatePromises = givers.map(updateGiverBalance);
+
+        // Wait for all updates to complete
+        await Promise.all(updatePromises);
+
+        // Wait for 10 seconds before starting the next iteration
+        await new Promise((resolve) => setTimeout(resolve, 5000));
     }
 }
 
