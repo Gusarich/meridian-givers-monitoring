@@ -18,7 +18,22 @@ html {
 }
 
 .title {
-    margin-bottom: 40px; /* More space below the title */
+    margin-bottom: 10px; /* Adjusted for spacing between title and byline */
+}
+
+.byline {
+    margin-bottom: 30px; /* Spacing between byline and progress bars */
+    font-size: 0.9em; /* Adjust font size as needed */
+    color: #333; /* Adjust text color as needed */
+}
+
+.byline a {
+    color: #0066cc; /* Adjust link color as needed */
+    text-decoration: none; /* No underline */
+}
+
+.byline a:hover {
+    text-decoration: underline; /* Underline on hover */
 }
 
 .progress-bars {
