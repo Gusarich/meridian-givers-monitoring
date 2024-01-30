@@ -42,7 +42,7 @@ html {
 
 .progress-bar {
     width: 60%; /* Adjust width of progress bars */
-    margin: 10px auto; /* Adding a 10px margin around each progress bar */
+    margin: 20px auto; /* Adding a 10px margin around each progress bar */
 }
 
 progress {
@@ -58,4 +58,15 @@ label {
 
 #totalMiningContainer {
     margin-bottom: 40px; /* Adjust the size of the gap as needed */
+}
+.elegant-link {
+    color: #0077cc; /* A nice shade of blue for the text */
+    text-decoration: none; /* Removes the underline from links */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.elegant-link:hover,
+.elegant-link:focus {
+    color: #005699; /* A darker shade of blue for the text on hover/focus */
+    text-decoration: underline; /* Adds underline on hover/focus for better accessibility */
 }

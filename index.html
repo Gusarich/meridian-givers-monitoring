@@ -28,10 +28,102 @@
             </div>
         </div>
         <script>
+            window.givers = [
+                'EQDz5ABKpaMO8BunzgNpcG8TAHvleDXGjSqIi6nOf5cLsFKg',
+                'EQB0wM5SSGxOMQW1kiA_CSnZi8xONhr2EaH0-DH3ErshW_kT',
+                'EQDifNns50Ial2wezfhHT69ycmucPjQvbVa8qLsbFoVqN9_-',
+                'EQDMI8s3OcoaM5A9OhIOj8lh1jqGVoJc4rouNi1XPIu5YcXh',
+                'EQCGGM9fF9hmvAt7OLWZKbX0tf3A5ZrCF7EW5mmdUk3wkqGm',
+                'EQCh7TvrKTFF1shor0ni2SsDF2poyGltxgWaJYOY6J3kqi1G',
+                'EQB3zmSjxPn2c-EcbDAzYiPZtbPi8DkxdcnjHYKRG3xealN0',
+                'EQBFUICbJRNPrV1Q6RN12oq7TNc87hkyV_8stbQOn5Q0ddd2',
+                'EQA-9Z_fJ3PstFkCoZIMij9xM3SVEJfqYtv-x8tKfUlb0Bh5',
+                'EQDKx_EepIPaTIBiaCLbyQn23cyxHQ2UhZxZWf34AKi-MrPN',
+                'EQAdbzmwgiGzoO8Qd9TaXez1_glc3u5k5OhyVP19eQU6_w8u',
+                'EQDAsvqI2NjvIQRgBZlJlLgE1O_qCbhLF0JHJaCacN5JYqlh',
+                'EQB32_v8qa1Acdbxu4o_fe6XkiyBNWwjeyzSmFYOH4E8siAI',
+                'EQBt17w56e3ZJTl2KlVOt8sNYecHHhOOfM2n4G7vDSlh5bpi',
+                'EQAVYeKiun0grXNECt2A-m3N9jmX4eLFazefhmpfATZv_3nd',
+                'EQCGGMVDNldf8rEk7Kes5lylUrONdXq9qSg2OO2u-fC-6AHP',
+                'EQCmEkx3VXRdbkvqs6qic91cxphZsPS2vAUvN70qWymbKa_a',
+                'EQBQ9V9FSSnbG180zmshd7jDgqiUiCXH-oYerS1-Z66juHBd',
+                'EQBLstaZ2tad5CSg-uVP76fwvj_K8SBrkOvLKP7pCEYAmHFY',
+                'EQC7FvnqMqEltKvFyuGiNnfJLh-d8Ej0HieRp73l0NoyJtj4',
+                'EQDuVMbAnnQr9Ecxd2sDIc5TDjgRgcFCLyL4sEOLUuTAYDEO',
+                'EQCYlzcaWPnHZu2koCLyXh9Jw9wQwRbqaqNIw2bhkfQaFdW8',
+                'EQBD5hih9xsfWEN41tJPMvabiLaz1jh86KkM9nKG3hOq1DO-',
+                'EQBuGoJmb8aUOMd0yt4pkevSY1WEWGyHyQkyTMOZZw4fnZhS',
+                'EQBKkIbu4suW_V8yzB3hBqDXOD_fe7w4jOWpf0231XSNMmC7',
+                'EQD5VUfl0vs24Pcf1dj6LV5La7prfn1lbzhrcgQ33lm5v1zM',
+                'EQBwKfqIlQ3HkDuS1MiNlUc0h77xYL1N7YeowU49sDwnwDfU',
+                'EQBp8dVtgqMOdFmo4zF0Q3S8p37M4riJ4HKDWN3f4kzpbSjD',
+                'EQC9MrbOn_RAbzBqPbm9OZmDOZipE_F9_DyAjBlRnZnzpRTu',
+                'EQAn8xg-0ertl0ATCSeKdywVXHrXyjv3gRg6ofy83IEmmv5T',
+                'EQAHayh7282LwrdvEN9DpVgSzK_Z4lgNsbFRtEehiV0Bjy8D',
+                'EQCg7Bjedg1TXm4zzwt1-_YgaCjzSdxXrNzHTv0978eaHEPL',
+                'EQBnt4TnEunxoTnbVFN3i1UcNFYH4y3NnLha7i0BwGFpfR0d',
+                'EQCiMbkesO1ky9lnfFcA3oc8W8DUrd2Giv1Jx9EsL9lifYVV',
+                'EQBpPJW0LD6JWBdfPbRZjdlO2oduMNV9DiTSvnvUbL5ZbD_S',
+                'EQAMYy1yijpkHX9yqMvSSr2CeIEiQRuhy50EoCHTMo4gaGY1',
+                'EQCakdHQb-6O89M65VFB9ryN637s3P0-uk8-yZ4WGVEsu-He',
+                'EQA8g2QX0WGIb3Papznpo1BoFrmYRoCp5NsLQXP-o8qMI95I',
+                'EQA_FZx8tpyPyAN6ZXssaAh3vqReoDe3MdCar7aj_9Ixe6tP',
+                'EQCHhMzHF_mh1fiahPoXPuyWuohpUtMwVorD-zpvxfgmsq0J',
+            ];
+            window.giverAddresses = [
+                'EQCfwe95AJDfKuAoP1fBtu-un1yE7Mov-9BXaFM3lrJZwqg_',
+                'EQBoATvbIa9vA7y8EUQE4tlsrrt0EhSUK4mndp49V0z7Me3M',
+                'EQAV3tsPXau3VJanBw4KCFaMk3l_n3sX8NHZNgICFrR-9EGE',
+                'EQAR9DvLZMHo9FAVMHI1vHvL7Fi7jWgjKtUARZ2S_nopQRYz',
+                'EQC10L__G2SeEeM2Lw9osGyYxhoIPqJwE-8Pe7728JcmnJzW',
+                'EQDZJFkh12kw-zLGqKSGVDf1V2PRzedGZDFDcFml5_0QerST',
+                'EQCiLN0gEiZqthGy-dKl4pi4kqWJWjRzR3Jv4jmPOtQHveDN',
+                'EQDB8Mo9EviBkg_BxfNv6C2LO_foJRXcgEF41pmQvMvnB9Jn',
+                'EQAidDzp6v4oe-vKFWvsV8MQzY-4VaeUFnGM3ImrKIJUIid9',
+                'EQAFaPmLLhXveHcw3AYIGDlHbGAbfQWlH45WGf4K4D6DNZxY',
+                'EQDSGvoktoIRTL6fBEK_ysS8YvLoq3cqW2TxB_xHviL33ex2',
+                'EQCvMmHhSYStEtUAEDrpV39T2GWl-0K-iqCxSSZ7I96L4yow',
+                'EQBvumwjKe7xlrjc22p2eLGT4UkdRnrmqmcEYT94J6ZCINmt',
+                'EQDEume45yzDIdSy_Cdz7KIKZk0HyCFIr0yKdbtMyPfFUkbl',
+                'EQAO7jXcX-fJJZl-kphbpdhbIDUqcAiYcAr9RvVlFl38Uatt',
+                'EQAvheS_G-U57CE55UlwF-3M-cc4cljbLireYCmAMe_RHWGF',
+                'EQCba5q9VoYGgiGykVazOUZ49UK-1RljUeZgU6E-bW0bqF2Z',
+                'EQCzT8Pk1Z_aMpNukdV-Mqwc6LNaCNDt-HD6PiaSuEeCD0hV',
+                'EQDglg3hI89dySlr-FR_d1GQCMirkLZH6TPF-NeojP-DbSgY',
+                'EQDIDs45shbXRwhnXoFZg303PkG2CihbVvQXw1k0_yVIqxcA',
+                'EQD7VspHSNS4VSpN7QQicNgSYoJ68CmdC6oL5ZEKHSXe26Sa',
+                'EQC5uEgW0MkTbCRBZB72maxCZT3m14OK2FcSLVr2H_7MTTSF',
+                'EQC2nD9nQNRhcfWhdBzRK-wdlTO4hGxnPFzdSxKN777tab2_',
+                'EQAqd4vV0O5oGfA7bl6fVORD_Y4PTNZG82AC2BObBux51g2w',
+                'EQDcOxqaWgEhN_j6Tc4iIQNCj2dBf9AFm0S9QyouwifYo9KD',
+                'EQAjYs4-QKve9gtwC_HrKNR0Eaqhze4sKUmRhRYeensX8iu3',
+                'EQBGhm8bNil8tw4Z2Ekk4sKD-vV-LCz7BW_qIYCEjZpiMF6Q',
+                'EQCtrloCD9BHbVT7q8aXkh-JtL_ZDvtJ5Y-eF2ahg1Ru1EUl',
+                'EQCWMIUBrpwl7OeyEQsOF9-ZMKCQ7fh3_UOvM2N5y77u8uPc',
+                'EQD_71XLqY8nVSf4i5pqGsCjz6EUo2kQEEQq0LUAgg6AHolO',
+                'EQDUIeTNcRUqsz4bugyWl4q4vg16PN2EwiyyAIEbf7_WJZZH',
+                'EQC4qKAIM0Od4RFG-4MAY0dJ3j4Wrcs0jc1XeWKJURYB9KSz',
+                'EQC0Ssi1gl0IQKEGsCp91NeiTThdMqCzYvlX9sVLEU97rWqL',
+                'EQDO2_2zkIJPqBKeE_P1VvDYOJi1vGPgiKo0Aa6Z-bY7BeuG',
+                'EQADEy4zcVl-ADNMISdYSs5cVjJcHmwC9_phXXjqNKgME7j6',
+                'EQDWELx3CYohD9sIjhyEIhP915kL_3XthqruCbmcB0YTWDqQ',
+                'EQDdoh2hzGFHdQtiXJNPNrwA8yIGd4-sFxyuEr3z6JL5BIFi',
+                'EQALXKp6G-IjWTPEqFKILkqcql-43DcoPzJ21Z02abpBPaQK',
+                'EQBAHXFxs1ohHY2bzW9A-V0NDznkFlROkNF_oyppxlLfsyEJ',
+                'EQCUwgBew9u4NwwuFsfPsXX9a69K55uFcieaHtc-c37OYDJO',
+            ];
+
             function createProgressBar(category, index, maxBalance) {
                 // Create the container div for the progress bar
                 var progressBarContainer = document.createElement('div');
                 progressBarContainer.className = 'progress-bar';
+
+                // Create the anchor element
+                var anchor = document.createElement('a');
+                anchor.href =
+                    'https://tonviewer.com/' + giverAddresses[index - 1];
+                anchor.className = 'elegant-link'; // Apply the class to the anchor
+                anchor.target = '_blank'; // Open in new tab
 
                 // Create the label
                 var label = document.createElement('label');
@@ -45,8 +137,9 @@
                 progress.value = maxBalance; // Placeholder value
                 progress.max = maxBalance;
 
-                // Append label and progress bar to the container
-                progressBarContainer.appendChild(label);
+                // Append label to anchor, and anchor to the container
+                anchor.appendChild(label);
+                progressBarContainer.appendChild(anchor);
                 progressBarContainer.appendChild(progress);
 
                 return progressBarContainer;
