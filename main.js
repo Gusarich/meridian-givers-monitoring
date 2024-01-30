@@ -38,7 +38,8 @@ async function main() {
                     '#' +
                     ((index % 10) + 1) +
                     ' - Balance: ' +
-                    formattedBalance;
+                    formattedBalance +
+                    'GRAM';
             }
 
             return balance; // Return the balance for use in the total
@@ -60,7 +61,8 @@ async function main() {
                     'Total Givers Balance: ' +
                     Math.floor(total / 1e9).toLocaleString() +
                     ' / ' +
-                    Number(5000000000).toLocaleString();
+                    Number(5000000000).toLocaleString() +
+                    'GRAM';
             }
             {
                 const label = totalProgress.previousElementSibling;
