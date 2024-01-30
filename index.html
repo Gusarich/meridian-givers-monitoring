@@ -25,7 +25,8 @@
                 // Create the label
                 var label = document.createElement('label');
                 label.htmlFor = category + index;
-                label.textContent = category + ' #' + index;
+                label.textContent =
+                    category + ' #' + (index % 10 === 0 ? 10 : index % 10);
 
                 // Create the progress element
                 var progress = document.createElement('progress');

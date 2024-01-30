@@ -79,7 +79,7 @@ async function main() {
                 label.textContent =
                     label.textContent.split('#')[0] +
                     '#' +
-                    (giverIndex + 1) +
+                    ((giverIndex % 10) + 1) +
                     ' - Balance: ' +
                     fromNano(balance);
             }
