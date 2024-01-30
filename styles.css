@@ -55,3 +55,7 @@ label {
     margin-bottom: 5px;
     text-align: left; /* Align text to the left */
 }
+
+#totalMiningContainer {
+    margin-bottom: 40px; /* Adjust the size of the gap as needed */
+}

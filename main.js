@@ -68,20 +68,38 @@ async function main() {
             // Read the number from the balance response
             const balance = balanceResponse.stack.readNumber();
 
+            // Format the number with commas
+            const formattedBalance = Math.floor(balance / 1e9).toLocaleString();
+
             // Update the progress bar for the current giver
             const progress = document.getElementById(`giver${index + 1}`);
             if (progress) {
-                progress.value = balance; // Here you might need to adjust based on your scale
+                progress.value = balance; // You may need to adjust based on your scale
                 const label = progress.previousElementSibling; // Assuming label is right before progress bar
                 label.textContent =
                     label.textContent.split('#')[0] +
                     '#' +
                     (index + 1) +
                     ' - Balance: ' +
-                    fromNano(balance);
+                    formattedBalance;
             }
+
+            return balance; // Return the balance for use in the total
         } catch (error) {
             console.error('Error fetching balance for giver:', giver, error);
+            return 0; // Return 0 if there was an error
+        }
+    }
+
+    // Function to update the total mining progress
+    function updateTotalMiningProgress(total) {
+        const totalProgress = document.getElementById('totalMiningProgress');
+        if (totalProgress) {
+            totalProgress.value = total; // Assuming total is within the min-max range of the progress bar
+            const label = totalProgress.previousElementSibling;
+            label.textContent =
+                'Total Givers Balance - ' +
+                Math.floor(total / 1e9).toLocaleString();
         }
     }
 
@@ -90,11 +108,18 @@ async function main() {
         // Create a promise for each giver's balance update
         const updatePromises = givers.map(updateGiverBalance);
 
-        // Wait for all updates to complete
-        await Promise.all(updatePromises);
+        // Wait for all updates to complete and sum the balances
+        const balances = await Promise.all(updatePromises);
+        const totalBalance = balances.reduce(
+            (acc, balance) => acc + balance,
+            0
+        );
+
+        // Update the total mining progress bar
+        updateTotalMiningProgress(totalBalance);
 
         // Wait for 10 seconds before starting the next iteration
-        await new Promise((resolve) => setTimeout(resolve, 5000));
+        await new Promise((resolve) => setTimeout(resolve, 10000));
     }
 }
 

@@ -14,7 +14,18 @@
                 <a href="https://gusarich.com" target="_blank">Gusarich</a>
             </p>
 
-            <div class="progress-bars"></div>
+            <div class="progress-bars">
+                <div class="progress-bar" id="totalMiningContainer">
+                    <label for="totalMiningProgress"
+                        >Total Givers Balance</label
+                    >
+                    <progress
+                        id="totalMiningProgress"
+                        value="0"
+                        max="5000000000000000000"
+                    ></progress>
+                </div>
+            </div>
         </div>
         <script>
             function createProgressBar(category, index, maxBalance) {
