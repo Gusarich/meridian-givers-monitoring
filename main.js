@@ -53,10 +53,25 @@ async function main() {
         const totalProgress = document.getElementById('totalMiningProgress');
         if (totalProgress) {
             totalProgress.value = total; // Assuming total is within the min-max range of the progress bar
-            const label = totalProgress.previousElementSibling;
-            label.textContent =
-                'Total Givers Balance - ' +
-                Math.floor(total / 1e9).toLocaleString();
+            {
+                const label =
+                    totalProgress.previousElementSibling.previousElementSibling;
+                label.textContent =
+                    'Total Givers Balance: ' +
+                    Math.floor(total / 1e9).toLocaleString() +
+                    ' / ' +
+                    Number(5000000000).toLocaleString();
+            }
+            {
+                const label = totalProgress.previousElementSibling;
+                label.textContent =
+                    'Mining Progress: ' +
+                    (
+                        ((5000000000000000000 - total) / 5000000000000000000) *
+                        100
+                    ).toFixed('2') +
+                    '%';
+            }
         }
     }
 
