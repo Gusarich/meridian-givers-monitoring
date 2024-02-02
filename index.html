@@ -19,7 +19,7 @@
                     <label for="totalMiningProgress"
                         >Total Givers Balance:</label
                     >
-                    <label for="miningProgress">Mining Progress:</label>
+                    <label for="miningProgress">Available for Mining:</label>
                     <progress
                         id="totalMiningProgress"
                         value="0"
@@ -113,6 +113,8 @@
                 'EQBAHXFxs1ohHY2bzW9A-V0NDznkFlROkNF_oyppxlLfsyEJ',
                 'EQCUwgBew9u4NwwuFsfPsXX9a69K55uFcieaHtc-c37OYDJO',
             ];
+            window.loadTime = Date.now();
+            window.giversInitialBalances = Array(40).fill(null);
 
             function createProgressBar(category, index, maxBalance) {
                 // Create the container div for the progress bar

@@ -18,22 +18,71 @@ async function main() {
 
             // Read the number from the balance response
             const balance = balanceResponse.stack.readNumber();
+            if (window.giversInitialBalances[index] === null) {
+                window.giversInitialBalances[index] = balance;
+            }
 
             // Format the number with commas
             const formattedBalance = Math.floor(balance / 1e9).toLocaleString();
 
             // Update the progress bar for the current giver
             const progress = document.getElementById(`giver${index + 1}`);
+
+            // Calculate the expected time to drain the balance
+            const timePassed = Date.now() - window.loadTime;
+            const drained = window.giversInitialBalances[index] - balance;
+            const drainingSpeed = drained / (timePassed / 1000);
+            const timeToDrain = balance / drainingSpeed;
+
+            function formatTimeToDrain(timeToDrain) {
+                if (timeToDrain === Infinity) {
+                    return '...';
+                }
+
+                const seconds = Math.floor(timeToDrain % 60);
+                const minutes = Math.floor((timeToDrain / 60) % 60);
+                const hours = Math.floor((timeToDrain / (60 * 60)) % 24);
+                const days = Math.floor(timeToDrain / (60 * 60 * 24));
+
+                let formattedTime = '';
+                if (days > 0) {
+                    formattedTime += `${days} day${days > 1 ? 's' : ''} `;
+                } else if (hours > 0) {
+                    formattedTime += `${hours} hour${hours > 1 ? 's' : ''} `;
+                } else if (minutes > 0) {
+                    formattedTime += `${minutes} minute${
+                        minutes > 1 ? 's' : ''
+                    } `;
+                } else if (seconds > 0) {
+                    formattedTime += `${seconds} second${
+                        seconds > 1 ? 's' : ''
+                    } `;
+                }
+
+                return formattedTime.trim();
+            }
+
+            const formattedTimeToDrain = formatTimeToDrain(timeToDrain);
+
             if (progress) {
                 progress.value = balance; // You may need to adjust based on your scale
                 const label = progress.previousElementSibling; // Assuming label is right before progress bar
-                label.textContent =
-                    label.textContent.split('#')[0] +
-                    '#' +
-                    ((index % 10) + 1) +
-                    ' - Balance: ' +
-                    formattedBalance +
-                    ' GRAM';
+                if (balance >= 100000000000) {
+                    label.textContent =
+                        label.textContent.split('#')[0] +
+                        '#' +
+                        ((index % 10) + 1) +
+                        ' - Balance: ' +
+                        formattedBalance +
+                        ' GRAM, expected to drain in ' +
+                        formatTimeToDrain(timeToDrain);
+                } else {
+                    label.textContent =
+                        label.textContent.split('#')[0] +
+                        '#' +
+                        ((index % 10) + 1) +
+                        ' - DRAINED';
+                }
             }
 
             return balance; // Return the balance for use in the total
@@ -61,11 +110,8 @@ async function main() {
             {
                 const label = totalProgress.previousElementSibling;
                 label.textContent =
-                    'Mining Progress: ' +
-                    (
-                        ((5000000000000000000 - total) / 5000000000000000000) *
-                        100
-                    ).toFixed('2') +
+                    'Available for Mining: ' +
+                    ((total / 5000000000000000000) * 100).toFixed('2') +
                     '%';
             }
         }
@@ -87,7 +133,7 @@ async function main() {
         updateTotalMiningProgress(totalBalance);
 
         // Wait for 10 seconds before starting the next iteration
-        await new Promise((resolve) => setTimeout(resolve, 10000));
+        await new Promise((resolve) => setTimeout(resolve, 5000));
     }
 }
 
