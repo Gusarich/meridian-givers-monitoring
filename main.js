@@ -12,12 +12,16 @@ async function main() {
             // Fetch the balance using the parsed address
             const balanceResponse = await client.callGetMethod(
                 address,
-                'get_wallet_data',
+                'get_mining_status',
                 []
             );
 
             // Read the number from the balance response
-            const balance = balanceResponse.stack.readNumber();
+            let stack = balanceResponse.stack;
+            stack.skip(6);
+            const leftSolutons = stack.readNumber();
+            const balance =
+                leftSolutons * window.solutionRewards[Math.floor(index / 10)];
             if (window.giversInitialBalances[index] === null) {
                 window.giversInitialBalances[index] = balance;
             }
@@ -74,7 +78,7 @@ async function main() {
                         ((index % 10) + 1) +
                         ' - Balance: ' +
                         formattedBalance +
-                        ' GRAM, expected to drain in ' +
+                        ' MRDN, expected to drain in ' +
                         formatTimeToDrain(timeToDrain);
                 } else {
                     label.textContent =
@@ -104,14 +108,14 @@ async function main() {
                     'Total Givers Balance: ' +
                     Math.floor(total / 1e9).toLocaleString() +
                     ' / ' +
-                    Number(5000000000).toLocaleString() +
-                    ' GRAM';
+                    Number(420000000).toLocaleString() +
+                    ' MRDN';
             }
             {
                 const label = totalProgress.previousElementSibling;
                 label.textContent =
                     'Available for Mining: ' +
-                    ((total / 5000000000000000000) * 100).toFixed('2') +
+                    ((total / 420000000000000000) * 100).toFixed('2') +
                     '%';
             }
         }
